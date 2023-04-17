@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1 class="text-6xl my-10 text-center">Books Directory</h1>
+    <div class="grid grid-cols-5 gap-1 w-full h-full p-2">
+        <% for (let book of bookArr) { %>
+            <div class="border-2 w-inherit h-inherit p-2">
+                <img src="<%= book.volumeInfo.imageLinks.thumbnail %>" alt="img">
+                <h2><strong>Title: </strong><%= book.volumeInfo.title %></h2>
+                <strong>Author: </strong><span><%= book.volumeInfo.authors %></span><br>
+                <strong>Publisher: </strong><span><%= book.volumeInfo.publisher %></span><br>
+                <strong>Pages: </strong><%= book.volumeInfo.pageCount %></span>
+                <p class="my-3"><%= book.volumeInfo.description ? book.volumeInfo.description.slice(0, 50) : '' %></p>
+                <a href="<%= book.volumeInfo.previewLink %>" target="_blank"><button class="rounded-md text-white px-4 py-2 bg-blue-300 hover:bg-blue-400">view</button></a>
+                <a href="<%= book.volumeInfo.canonicalVolumeLink %>" target="_blank"><button class="rounded-md text-white px-4 py-2 bg-blue-300 hover:bg-blue-400">More</button></a>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
